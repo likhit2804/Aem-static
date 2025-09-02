@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,7 @@ body {
     padding: 15px 0;
     position: fixed;
     height: 100vh;
-    overflow-y: auto;
+    overflow-y: hidden;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.6);
     z-index: 100;
 }
@@ -438,6 +439,8 @@ body.light-theme .unit-btn.active {
       <li><button class="lecture-btn" onclick="showLecture('lecture7', this)">Lecture 7: Advanced Methods</button></li>
       <li><button class="lecture-btn" onclick="showLecture('lecture8', this)">Lecture 8: Variable Coefficients</button></li>
       <li><button class="lecture-btn" onclick="showLecture('lecture9', this)">Lecture 9: PDE</button></li>
+        <li><button class="lecture-btn" onclick="showLecture('lecture10', this)">Final</button></li>
+    
     </ul>
   </div>
 
@@ -1377,6 +1380,71 @@ body.light-theme .unit-btn.active {
             <p>The complete solution is the product $$z(x,y) = X(x)Y(y)$$. More general solutions are formed by taking a superposition (sum) of these solutions for different values of k. The specific values for the constants are found using initial or boundary conditions.</p>
         </div>
     </details>
+</div>
+    <div id="lecture10" class="lecture-content" style="display: none;">
+    <h2>Lecture 10: Formation of Partial Differential Equations</h2>
+    
+    <h3>1. By Eliminating Arbitrary Constants</h3>
+    <p>A PDE can be formed by differentiating a relation to eliminate the arbitrary constants present.</p>
+    
+    <h4>Example 1</h4>
+    <p>Form a PDE by eliminating the constants <strong>a</strong> and <strong>b</strong> from the equation:
+        $$2z = \frac{x^2}{a^2} + \frac{y^2}{b^2}$$
+    </p>
+    <ul>
+        <li>
+            <strong>Step 1: Differentiate with respect to x</strong><br>
+            Differentiate the equation partially with respect to \(x\), keeping \(y\) constant.
+            $$2\frac{\partial z}{\partial x} = \frac{2x}{a^2}$$
+            Rearranging gives an expression for \(\frac{1}{a^2}\):
+            $$\frac{1}{a^2} = \frac{1}{x}\frac{\partial z}{\partial x}$$
+        </li>
+        <li>
+            <strong>Step 2: Differentiate with respect to y</strong><br>
+            Differentiate partially with respect to \(y\), treating \(x\) as a constant.
+            $$2\frac{\partial z}{\partial y} = \frac{2y}{b^2}$$
+            Rearranging gives an expression for \(\frac{1}{b^2}\):
+            $$\frac{1}{b^2} = \frac{1}{y}\frac{\partial z}{\partial y}$$
+        </li>
+        <li>
+            <strong>Step 3: Substitute and Simplify</strong><br>
+            Substitute the expressions for \(\frac{1}{a^2}\) and \(\frac{1}{b^2}\) back into the original equation:
+            $$2z = x^2 \left(\frac{1}{x}\frac{\partial z}{\partial x}\right) + y^2 \left(\frac{1}{y}\frac{\partial z}{\partial y}\right)$$
+            This simplifies to the final PDE:
+            <div class="pde-box">
+            $$2z = x\frac{\partial z}{\partial x} + y\frac{\partial z}{\partial y}$$
+            </div>
+        </li>
+    </ul>
+    <hr>
+
+    <h3>2. By Eliminating an Arbitrary Function</h3>
+    <p>A PDE can also be formed by eliminating an arbitrary function from a relation.</p>
+    
+    <h4>Example 2</h4>
+    <p>Form a PDE by eliminating the function <strong>f</strong> from:
+        $$z = f(x^2 + y^2)$$
+    </p>
+    <ul>
+        <li>
+            <strong>Step 1: Differentiate with respect to x</strong>
+            $$\frac{\partial z}{\partial x} = f'(x^2 + y^2) \cdot (2x)$$
+        </li>
+        <li>
+            <strong>Step 2: Differentiate with respect to y</strong>
+            $$\frac{\partial z}{\partial y} = f'(x^2 + y^2) \cdot (2y)$$
+        </li>
+        <li>
+            <strong>Step 3: Eliminate the function f'</strong><br>
+            By dividing the two resulting equations, the arbitrary function \(f'\) is eliminated:
+            $$\frac{\frac{\partial z}{\partial x}}{\frac{\partial z}{\partial y}} = \frac{2x \cdot f'(x^2+y^2)}{2y \cdot f'(x^2+y^2)} = \frac{x}{y}$$
+            Cross-multiplying gives the required PDE:
+            <div class="pde-box">
+            $$y\frac{\partial z}{\partial x} = x\frac{\partial z}{\partial y}$$
+            </div>
+        </li>
+    </ul>
+    <p>The notes indicate that for these examples, the resulting PDE is of the <strong>first order</strong>.</p>
 </div>
         </div>
     
